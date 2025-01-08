@@ -40,7 +40,9 @@ PreparedInterfaces = Dict[str, InterfaceAttributes]
 
 
 class Parser:
-    def __init__(self, interface_qualname: str) -> None:
+    def __init__(self, interface_qualname: str, export: bool=False) -> None:
+        print(f"export = ${export}")
+        self.export = export
         self.interface_qualname = interface_qualname
         self.prepared: PreparedInterfaces = {}
 
@@ -78,7 +80,8 @@ class Parser:
         serialized: List[str] = []
 
         for interface, attributes in self.prepared.items():
-            s = f"interface {interface} {{\n"
+            modifiers = "export " if self.export else ""
+            s = f"{modifiers}interface {interface} {{\n"
             for attribute_name, attribute_type in attributes.items():
                 s += f"    {attribute_name}: {attribute_type};\n"
             s += "}"
