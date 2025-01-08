@@ -41,7 +41,6 @@ PreparedInterfaces = Dict[str, InterfaceAttributes]
 
 class Parser:
     def __init__(self, interface_qualname: str, export: bool=False) -> None:
-        print(f"export = ${export}")
         self.export = export
         self.interface_qualname = interface_qualname
         self.prepared: PreparedInterfaces = {}
