@@ -45,7 +45,7 @@ def get_args_namespace() -> argparse.Namespace:
         "-o, --outpath", action="store", default="interface.ts", dest="outpath"
     )
     argparser.add_argument("-a, --append", action="store_true", dest="should_append")
-    argparser.add_argument("-e, --export", action="store_true", dest="export")
+    argparser.add_argument("-e", "--export", action="store_true", help="Export each interface created")
     return argparser.parse_args()
 
 
